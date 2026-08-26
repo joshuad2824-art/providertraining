@@ -1,0 +1,59 @@
+/* Ascension primary palette — Digital Brand Guidelines, Nov 2022, p.7.
+   Five brand colors + white/black. Blue is reserved for the logo and for
+   headline/subhead type only; the remaining colors carry graphic elements. */
+:root{
+  --asc-blue:#1b4297;
+  --asc-medium-blue:#1e69d2;
+  --asc-green:#00a791;
+  --asc-violet:#b40f87;
+  --asc-gold:#ffb400;
+  --asc-white:#ffffff;
+  --asc-black:#000000;
+
+  /* Tints — the guidelines authorize "a progression of tints" of the four
+     graphic colors for arch color fields. Generated at 90/75/50/25/10%. */
+  --asc-blue-90:#32559f;--asc-blue-75:#547ab1;--asc-blue-50:#8da0cb;--asc-blue-25:#c6d0e5;--asc-blue-10:#e8ecf5;
+  --asc-medium-blue-90:#3578d6;--asc-medium-blue-75:#5892e0;--asc-medium-blue-50:#8eb4e9;--asc-medium-blue-25:#c7daf4;--asc-medium-blue-10:#e9f0fb;
+  --asc-green-90:#1ab09c;--asc-green-75:#40bdad;--asc-green-50:#7fd3c8;--asc-green-25:#bfe9e3;--asc-green-10:#e6f6f4;
+  --asc-violet-90:#bb2793;--asc-violet-75:#c74fa5;--asc-violet-50:#da87c3;--asc-violet-25:#ecc3e1;--asc-violet-10:#f8e7f3;
+  --asc-gold-90:#ffbb1a;--asc-gold-75:#ffc740;--asc-gold-50:#ffda80;--asc-gold-25:#ffecbf;--asc-gold-10:#fff8e6;
+
+  /* Neutrals. The guidelines specify only white and black plus a "light grey"
+     display-ad border; these are the working neutrals derived from that. */
+  --asc-grey-900:#1a1a1a;
+  --asc-grey-700:#4a4a4a;
+  --asc-grey-500:#767676;
+  --asc-grey-300:#c9c9c9;
+  --asc-grey-200:#e0e0e0;
+  --asc-grey-100:#f0f0f0;
+  --asc-grey-50:#f7f8fa;
+
+  /* Semantic aliases */
+  --text-heading:var(--asc-blue);
+  --text-body:var(--asc-grey-900);
+  --text-muted:var(--asc-grey-700);
+  --text-on-color:var(--asc-white);
+  --text-link:var(--asc-medium-blue);
+  --text-link-hover:var(--asc-blue);
+  --text-fineprint:var(--asc-grey-500);
+
+  --surface-page:var(--asc-white);
+  --surface-subtle:var(--asc-grey-50);
+  --surface-card:var(--asc-white);
+  --surface-inverse:var(--asc-blue);
+  --surface-accent:var(--asc-medium-blue);
+
+  --border-default:var(--asc-grey-300);
+  --border-subtle:var(--asc-grey-200);
+  --border-ad:var(--asc-grey-300); /* 1px min. light-grey display-ad border, p.19 */
+  --border-strong:var(--asc-blue);
+
+  --action-primary:var(--asc-medium-blue);
+  --action-primary-hover:var(--asc-blue);
+  --action-emphasis:var(--asc-violet); /* high-emphasis CTA, limited use, p.25 */
+  --action-on-color:var(--asc-white);
+  --focus-ring:var(--asc-gold);
+
+  /* Arch texture: always 100% color field + 10% opacity white arch (p.15) */
+  --arch-overlay:rgba(255,255,255,.10);
+}

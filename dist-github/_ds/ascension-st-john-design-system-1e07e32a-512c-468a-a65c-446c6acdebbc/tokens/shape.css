@@ -1,0 +1,28 @@
+/* Shape, border and elevation.
+   The guidelines specify one radius outright — a 4px corner radius on CTA
+   buttons (p.25) — and forbid drop shadows, bevels and glows on the logo (p.5).
+   The brand reads FLAT: color fields, hairline rules, no ornamentation. The
+   elevation steps below are deliberately shallow and exist only for overlays
+   (dialogs, menus, sticky bars). Do not add shadows to color fields or to the
+   arch. */
+:root{
+  --radius-none:0;
+  --radius-button:4px;   /* exact spec, p.25 */
+  --radius-input:4px;
+  --radius-card:4px;
+  --radius-panel:0;      /* arch color fields and banners are square */
+  --radius-pill:999px;   /* tags/filter chips only */
+
+  --border-width-hairline:1px;
+  --border-width-strong:2px;
+  --border-width-focus:2px;
+
+  --shadow-none:none;
+  --shadow-raise:0 1px 2px rgba(0,0,0,.08);
+  --shadow-overlay:0 4px 16px rgba(0,0,0,.12);
+  --shadow-dialog:0 12px 32px rgba(27,66,151,.18);
+  --shadow-focus:0 0 0 3px rgba(255,180,0,.55);
+
+  --overlay-scrim:rgba(27,66,151,.55);
+  --blur-scrim:6px;
+}

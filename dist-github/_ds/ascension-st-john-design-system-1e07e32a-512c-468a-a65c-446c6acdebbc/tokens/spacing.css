@@ -1,0 +1,34 @@
+/* Spacing & layout. The brand system is built on a three-column grid whose
+   1/3–2/3 ratios govern arch placement (p.16) and a 3x3 placement grid for the
+   arch itself (p.14). Spacing steps are a 4px base scale. */
+:root{
+  --space-0:0;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+
+  --grid-columns:3; /* @kind other */
+  --grid-gutter:var(--space-6);
+  --grid-third:33.3333%;
+  --grid-two-thirds:66.6667%;
+
+  --container-max:1200px;
+  --measure-body:66ch;
+
+  /* Logo clear space, expressed as multiples of X (p.4).
+     X = cap height of the "Ascension" wordmark. */
+  --logo-clearspace-lockup:1.5; /* @kind other */
+  --logo-clearspace-emblem:0.25; /* @kind other */
+  --logo-clearspace-wordmark:1; /* @kind other */
+  --logo-min-vertical:60px;   /* digital minimum, vertical lockup */
+  --logo-min-horizontal:30px; /* digital minimum, horizontal lockup */
+}

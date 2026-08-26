@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/colors.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/typography.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/shape.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/motion.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/base.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/styles.css">
+<script src="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: var(--asc-grey-100, #eef0f3); }
+  a { color: var(--asc-medium-blue); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: var(--asc-blue); }
+  *:focus-visible { outline: 2px solid var(--asc-gold); outline-offset: 2px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--asc-grey-100,#eef0f3);font-family:var(--font-sans)">
+
+  <header style="display:flex;align-items:center;gap:24px;padding:0 28px;height:68px;background:var(--asc-blue);color:#fff;flex:0 0 auto">
+    <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Logo" lockup="st-john-horizontal" color="wht" height="{{ logoHeight }}" asset-base="assets/logos" hint-size="220px,32px"></x-import>
+    <div style="width:1px;height:30px;background:rgba(255,255,255,.28)"></div>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Introduction to Cerner</div>
+      <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.72)">Provider Edition &middot; {{ marketLabel }}</div>
+    </div>
+    <div style="flex:1"></div>
+    <div style="display:flex;align-items:center;gap:14px;flex:0 0 auto">
+      <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.72)">Screen {{ stepNow }} of {{ stepTotal }}</div>
+      <div style="width:150px;height:6px;background:rgba(255,255,255,.22);border-radius:3px;overflow:hidden">
+        <div style="height:100%;background:var(--asc-gold);width:{{ pct }}"></div>
+      </div>
+    </div>
+  </header>
+
+  <div style="flex:1;display:flex;align-items:stretch;min-height:0">
+
+    <sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Module contents" style="flex:0 0 272px;background:#fff;border-right:1px solid var(--border-subtle);padding:26px 0 40px;overflow-y:auto">
+        <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);padding:0 22px 14px">Module contents</div>
+        <sc-for list="{{ rail }}" as="it" hint-placeholder-count="8">
+          <div>
+            <sc-if value="{{ it.showLesson }}" hint-placeholder-val="{{ true }}">
+              <div style="font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);padding:18px 22px 8px">{{ it.lesson }}</div>
+            </sc-if>
+            <button onClick="{{ it.go }}" style="display:flex;align-items:baseline;gap:10px;width:100%;text-align:left;border:0;border-left:3px solid {{ it.mark }};background:{{ it.bg }};color:{{ it.fg }};font-family:var(--font-sans);font-size:14.5px;font-weight:{{ it.weight }};line-height:1.35;padding:9px 22px 9px 19px;cursor:pointer;transition:background 150ms cubic-bezier(.4,0,.2,1)" style-hover="background:var(--asc-medium-blue-10)">
+              <span style="font-family:var(--font-condensed);font-size:12px;color:var(--asc-grey-500,#6b7280);flex:0 0 18px">{{ it.num }}</span>
+              <span>{{ it.label }}</span>
+            </button>
+          </div>
+        </sc-for>
+      </nav>
+    </sc-if>
+
+    <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <div style="flex:1;padding:44px 56px 56px">
+       <div style="max-width:920px;margin:0 auto">
+
+        <sc-if value="{{ on1 }}" hint-placeholder-val="{{ true }}">
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.ArchPanel" color="blue" crop="horizontal" bleed="right" asset-base="assets" padding="56px" hint-size="100%,420px">
+            <div style="max-width:34ch">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:18px">Cerner core content</div>
+              <h1 style="font-family:var(--font-serif);font-weight:700;font-size:56px;line-height:1.04;margin:0 0 20px;color:#fff;text-wrap:pretty">Introduction to Cerner</h1>
+              <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;margin:0 0 32px;color:rgba(255,255,255,.9);text-wrap:pretty">For providers, physicians and mid&#8209;levels. Everything you need before your instructor&#8209;led Cerner course.</p>
+              <div style="display:flex;gap:28px;flex-wrap:wrap;font-family:var(--font-condensed);font-size:13px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.78)">
+                <div>{{ estMinutes }} minutes</div>
+                <div>Self&#8209;paced</div>
+                <div>Required pre&#8209;work</div>
+              </div>
+            </div>
+          </x-import>
+          <p style="font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--text-muted);margin:28px 0 0;max-width:66ch">This module is the provider path only. Nurse, PCT and department&#8209;specific views have been removed so you can move straight to what you will use in the patient chart.</p>
+        </sc-if>
+
+        <sc-if value="{{ on2 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Getting started</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">How to move through this module</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 32px;max-width:62ch;text-wrap:pretty">There is no audio. Read each screen, then move forward when you are ready.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:28px">
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,190px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:21px;color:var(--asc-blue);margin-bottom:10px">Next and Back</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Use the buttons at the bottom of every screen. Your place is remembered if you close the module and come back.</p>
+            </x-import>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,190px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:21px;color:var(--asc-blue);margin-bottom:10px">Contents menu</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">The list on the left jumps to any screen. Use it to come back to a single topic later as a job aid.</p>
+            </x-import>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,190px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:21px;color:var(--asc-blue);margin-bottom:10px">Attestation</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">The last screen asks you to confirm you completed the module. Bring that confirmation to your instructor&#8209;led class.</p>
+            </x-import>
+          </div>
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Alert" tone="info" title="Screens marked with an image frame are waiting on approved Cerner screenshots." hint-size="100%,86px">Until they are added, the numbered key beside each frame tells you what to look for on your own screen.</x-import>
+        </sc-if>
+
+        <sc-if value="{{ on3 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Getting started</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">What you will be able to do</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 32px;max-width:62ch;text-wrap:pretty">By the end of this module, you will be able to:</p>
+          <div style="display:flex;flex-direction:column;gap:14px;max-width:76ch">
+            <div style="display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:20px 24px">
+              <span style="flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:16px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:15px">1</span>
+              <p style="font-family:var(--font-sans);font-size:17px;line-height:1.5;color:var(--text-body);margin:0">Describe what PowerChart is and how it fits the rest of the Cerner applications you will use.</p>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:20px 24px">
+              <span style="flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:16px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:15px">2</span>
+              <p style="font-family:var(--font-sans);font-size:17px;line-height:1.5;color:var(--text-body);margin:0">Access PowerChart, log in, and select the correct provider role.</p>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:20px 24px">
+              <span style="flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:16px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:15px">3</span>
+              <p style="font-family:var(--font-sans);font-size:17px;line-height:1.5;color:var(--text-body);margin:0">Find a patient, open the chart, and read the demographics bar.</p>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:20px 24px">
+              <span style="flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:16px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:15px">4</span>
+              <p style="font-family:var(--font-sans);font-size:17px;line-height:1.5;color:var(--text-body);margin:0">Navigate the chart Menu and the Provider View components to reach results, orders, medications and documentation.</p>
+            </div>
+            <div style="display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:20px 24px">
+              <span style="flex:0 0 32px;height:32px;display:grid;place-items:center;border-radius:16px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:15px">5</span>
+              <p style="font-family:var(--font-sans);font-size:17px;line-height:1.5;color:var(--text-body);margin:0">Locate provider notes and recognize how a note is signed, saved or corrected.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on4 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">About PowerChart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">One record, one chart</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">PowerChart is the electronic health record you will use for the patients you care for. Your care team shares one record, so you don&rsquo;t have to repeat yourself.</p>
+          <p style="font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--text-body);margin:0 0 22px;max-width:66ch">In PowerChart you will review results, place orders and PowerPlans, reconcile medications, document your assessment, and create and sign notes.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:28px">
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-top:4px solid var(--asc-blue);border-radius:4px;padding:22px 24px">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:13px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-blue);margin-bottom:8px">PowerChart</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">The main chart. Inpatient, ambulatory and specialty views all live here.</p>
+            </div>
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-top:4px solid var(--asc-blue);border-radius:4px;padding:22px 24px">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:13px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-blue);margin-bottom:8px">FirstNet</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">The emergency department view, built around the ED tracking board, called LaunchPoint.</p>
+            </div>
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-top:4px solid var(--asc-blue);border-radius:4px;padding:22px 24px">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:13px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-blue);margin-bottom:8px">Your Cerner position</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Perioperative and specialty content is built into PowerChart and released by Cerner position. What you see is set by the position you were given, not by a separate application.</p>
+            </div>
+          </div>
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Alert" tone="info" title="Different doors, same chart." hint-size="100%,86px">Whichever application you open, you are looking at the same patient record — only the view and the starting screen change. Ascension St. John runs the 2018.01 build, so Cerner screenshots and tips you find online may not match your screen.</x-import>
+        </sc-if>
+
+        <sc-if value="{{ on5 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">About PowerChart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Who else is in the chart</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">You are one of many people documenting on the same patient. Knowing who does what saves you duplicate work.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:78ch">
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:18px 24px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue)">Providers</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Physicians, mid&#8209;levels and residents. Orders, workflow documentation, notes, discharge.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:18px 24px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue)">Nursing</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Assessments, medication administration, patient education, and orders taken by phone or verbally that come to you to sign.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:18px 24px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue)">Pharmacy</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Reviews and verifies medication orders. Pharmacy technicians often complete the medication history before you review it.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:18px 24px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue)">Ancillary and therapy</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Lab, imaging, respiratory, rehab and case management document in the same chart and results flow back to you.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on6 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Getting in</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Access PowerChart</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">How you open PowerChart depends on where you are.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:28px">
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:24px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:22px;color:var(--asc-blue);margin-bottom:10px">On an Ascension workstation</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--text-muted);margin:0">Open PowerChart from the desktop, or from the Citrix Portal icon for MVD applications. On site, join the <strong>AH-AIA</strong> network — your Wi&#8209;Fi username is your <strong>domain\username</strong>.</p>
+            </div>
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:24px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:22px;color:var(--asc-blue);margin-bottom:10px">From home</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--text-muted);margin:0">Install Citrix Workspace, then sign in at <strong>cloud.ascension.org</strong> with your domain\username. The old mvd.sjmc.org address is being retired. To view radiology images off site, open the <strong>OKTUL Published Desktop</strong> under Desktops rather than launching the viewer from Cerner.</p>
+            </div>
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:24px">
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:22px;color:var(--asc-blue);margin-bottom:10px">On your phone</div>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--text-muted);margin:0">Provider phone applications include PowerChart Touch, Message Center, Dragon Medical One and PerfectServe. Obstetrics also uses FetaLink+.</p>
+            </div>
+          </div>
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Alert" tone="warning" title="Set up before class" hint-size="100%,86px">Set your password, and set up EPCS with Imprivata if you prescribe controlled substances. Clinical Informatics can help: 918-744-3088, Monday to Friday.</x-import>
+        </sc-if>
+
+        <sc-if value="{{ on7 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Getting in</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Log in</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Enter your username and password on the PowerChart sign&#8209;in window.</p>
+          <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,1fr);gap:32px;align-items:start">
+            <div>
+              <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px">
+                <div style="position:relative;width:100%;aspect-ratio:16/10">
+                  <image-slot id="cerner-login" shape="rect" radius="0" fit="contain" placeholder="Drop the PowerChart login screenshot"></image-slot>
+                </div>
+              </div>
+              <div style="font-family:var(--font-condensed);font-size:13px;color:var(--asc-grey-500,#6b7280);margin-top:10px">PowerChart sign&#8209;in window</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue);margin-bottom:6px">In the training domain</div>
+                <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Your facilitator gives you a training username for your role. Training accounts and patients reset nightly, so anything you save in class will be gone the next morning.</p>
+              </div>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue);margin-bottom:6px">In the live record</div>
+                <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">You use your own credentials. Some items are named differently in the live record than in training &mdash; the function is the same.</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on8 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Getting in</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Select your role</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Cerner asks which role you are working in. Your answer sets the view you land on.</p>
+          <p style="font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--text-body);margin:0 0 24px;max-width:66ch">Choose the provider role that matches the work you are about to do. Most providers land in the Message Center; in the emergency department you land on the ED tracking board, and in a perioperative area you land in case selection.</p>
+          <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,1fr);gap:32px;align-items:start">
+            <div>
+              <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px">
+                <div style="position:relative;width:100%;aspect-ratio:16/10">
+                  <image-slot id="cerner-role" shape="rect" radius="0" fit="contain" placeholder="Drop the role selection screenshot"></image-slot>
+                </div>
+              </div>
+              <div style="font-family:var(--font-condensed);font-size:13px;color:var(--asc-grey-500,#6b7280);margin-top:10px">Role selection window</div>
+            </div>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Alert" tone="warning" title="Pick carefully." hint-size="100%,140px">If you select the wrong role, your default view and available tools will not match your work. Close PowerChart and reopen it to choose again.</x-import>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on9 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">The patient chart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">The PowerChart window</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Five things to find before you do anything else.</p>
+          <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px;margin-bottom:24px">
+            <div style="position:relative;width:100%;aspect-ratio:16/9">
+              <image-slot id="cerner-overview" shape="rect" radius="0" fit="contain" src="Message_Center/images/image10.png" placeholder="Drop the PowerChart overview screenshot"></image-slot>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">1</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Menu bar and toolbar</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Task, Edit, View, Patient, Chart, Links, Notifications, Inbox and Help across the very top, with the toolbar underneath.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">2</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Message Center</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Where you land at login. Inbox, Proxies and Pools tabs, with the Inbox Summary listing the documents, orders, results and refill requests waiting on you.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">3</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Patient Lists</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Opens your patient lists — your patients, and the patients on your unit. This is the primary way you reach a chart.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">4</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Role tools</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">MPTL, Physician Worklist, PC TOUCH, Depart and Communicate sit on the toolbar. What appears depends on your role.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">5</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Search</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Top right. Use it for a patient who is not on one of your lists.</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on10 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">The patient chart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Find your patient</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Lists first, search second.</p>
+          <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,1fr);gap:32px;align-items:start">
+            <div>
+              <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px">
+                <div style="position:relative;width:100%;aspect-ratio:16/10">
+                  <image-slot id="cerner-search" shape="rect" radius="0" fit="contain" placeholder="Drop the patient search screenshot"></image-slot>
+                </div>
+              </div>
+              <div style="font-family:var(--font-condensed);font-size:13px;color:var(--asc-grey-500,#6b7280);margin-top:10px">Patient search window</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue);margin-bottom:6px">From a patient list</div>
+                <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Double&#8209;click a patient to open the chart, or right&#8209;click to choose exactly which view you want to open into.</p>
+              </div>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue);margin-bottom:6px">From search</div>
+                <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Search by name or identifier when a patient is not on your list. Confirm you have the right person and the right encounter before you document.</p>
+              </div>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--asc-blue);margin-bottom:6px">Building lists</div>
+                <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0">Location, custom, relationship and proxy lists are covered in your instructor&#8209;led class.</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on11 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">The patient chart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">The patient chart tab</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Every chart you open becomes its own tab.</p>
+          <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px;margin-bottom:24px">
+            <div style="display:grid;grid-template-columns:minmax(0,340fr) minmax(0,485fr);gap:16px;align-items:start">
+              <div>
+                <div style="position:relative;width:100%;aspect-ratio:340/36">
+                  <image-slot id="cerner-charttab" shape="rect" radius="0" fit="contain" src="assets/screens/chart-tab-left.png" placeholder="Drop the patient chart tab screenshot"></image-slot>
+                </div>
+                <div style="font-family:var(--font-condensed);font-size:12.5px;color:var(--asc-grey-500,#6b7280);margin-top:8px">The open patient&rsquo;s tab</div>
+              </div>
+              <div>
+                <div style="position:relative;width:100%;aspect-ratio:485/36">
+                  <image-slot id="cerner-charttab-controls" shape="rect" radius="0" fit="contain" src="assets/screens/chart-tab-right.png" placeholder="Drop the List and Recent controls screenshot"></image-slot>
+                </div>
+                <div style="font-family:var(--font-condensed);font-size:12.5px;color:var(--asc-grey-500,#6b7280);margin-top:8px">List, Recent and the Name search box</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">1</span>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0"><strong style="color:var(--asc-blue)">The tab shows the patient name.</strong> Check it before you enter anything. With several charts open it is easy to type into the wrong one.</p>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">2</span>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0"><strong style="color:var(--asc-blue)">Close the tab, not the application,</strong> when you finish with a patient. Closing charts you are done with keeps the window manageable.</p>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">3</span>
+              <p style="font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--text-muted);margin:0"><strong style="color:var(--asc-blue)">List, Recent and the Name box</strong> sit at the top right. Recent is the fastest way back to a chart you just had open; use Name to search for a patient who is not on a list.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on12 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">The patient chart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">The demographics bar</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">The band across the top of every chart. Read it every time you open a patient.</p>
+          <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px;margin-bottom:24px">
+            <div>
+              <div style="position:relative;width:100%;aspect-ratio:950/64;margin-bottom:12px">
+                <image-slot id="cerner-demobar" shape="rect" radius="0" fit="contain" src="assets/screens/demographics-bar-left.png" placeholder="Drop the left half of the demographics bar"></image-slot>
+              </div>
+              <div style="position:relative;width:100%;aspect-ratio:965/64;margin-bottom:12px">
+                <image-slot id="cerner-demobar-right" shape="rect" radius="0" fit="contain" src="assets/screens/demographics-bar-right.png" placeholder="Drop the right half of the demographics bar"></image-slot>
+              </div>
+              <div style="font-family:var(--font-condensed);font-size:12.5px;color:var(--asc-grey-500,#6b7280)">One continuous strip, shown in two halves so it stays readable. Left half above, right half below.</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">1</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Name, Age, DOB, Sex</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Identity, on the left. Confirm it against the patient in front of you before you document.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">2</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">MRN and Fin#</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">MRN identifies the person and never changes. Fin# identifies this encounter, so it changes with every admission.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">3</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Allergies</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Far right, above the encounter type and admission date and time. Check it before ordering — &ldquo;no known allergies&rdquo; and a blank field are not the same thing.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">4</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">Code Status, Loc, Isolation</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Code Status and Portal on the second row. Loc gives unit, room and bed. Isolation shows any precautions in place.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:13px;background:var(--asc-medium-blue);color:#fff;font-family:var(--font-sans);font-weight:600;font-size:13px">5</span>
+              <div>
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--asc-blue)">PCP and Attending</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:2px 0 0">Who else is on this patient. These relationships drive whose patient list the patient appears on.</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on13 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">The patient chart</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">The two left-hand menus</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Two menus sit on the left. The chart <strong>Menu</strong> collapses to a vertical tab at the far edge; inside Provider View, a second list holds the workflow components.</p>
+          <div style="display:grid;grid-template-columns:minmax(240px,0.85fr) minmax(0,1.15fr);gap:32px;align-items:start">
+            <div>
+              <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px">
+                <div style="position:relative;width:100%;aspect-ratio:302/336">
+                  <image-slot id="cerner-toc" shape="rect" radius="0" fit="contain" src="assets/screens/provider-view-menu.png" placeholder="Drop the Provider View menu screenshot"></image-slot>
+                </div>
+              </div>
+              <div style="font-family:var(--font-condensed);font-size:13px;color:var(--asc-grey-500,#6b7280);margin-top:10px">Provider View component list</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 20px">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue);margin-bottom:4px">Menu (the far-left tab)</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">The chart table of contents. Click the vertical <strong>Menu</strong> tab to expand it, then pin it open with the pin icon. Results Review, Orders, Medication List, Histories and Documentation live here.</p>
+              </div>
+              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 20px">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue);margin-bottom:4px">Workflow tabs</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Admit Inpt WF, ClinPic, Manage Inpt WF and any specialty view run across the top of Provider View.</p>
+              </div>
+              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 20px">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue);margin-bottom:4px">Component list</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Labs, New Order Entry, Chief Complaint, Home Medications, Medications, History of Present Illness, Review of Systems. Click one to jump to that section of the page.</p>
+              </div>
+              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 20px">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue);margin-bottom:4px">Reorder it to suit you</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">You can drag components into the order you prefer and it sticks to your account. Training domain settings reset overnight.</p>
+              </div>
+              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 20px">
+                <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue);margin-bottom:4px">Documentation</div>
+                <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">All notes on the chart, reached from Menu. In the live record this appears as Provider Note.</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on14 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Documenting</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Documentation and notes</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">Where notes live, and what the buttons at the bottom of a note actually do.</p>
+          <div style="border:1px solid var(--border-subtle);background:#fff;border-radius:4px;padding:10px;margin-bottom:26px">
+            <div style="position:relative;width:100%;aspect-ratio:16/9">
+              <image-slot id="cerner-notes" shape="rect" radius="0" fit="contain" src="Message_Center/images/image1.png" placeholder="Drop the documentation / notes screenshot"></image-slot>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:80ch;margin-bottom:26px">
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 22px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue)">Sign / Submit</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0">Completes the note and makes it part of the record.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 22px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue)">Save</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0">Holds the note for you to finish later. Other providers cannot see a saved note.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 22px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue)">Revise or Addend</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0">Find the note under Documentation, select it, and choose Modify to revise or add to it.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 22px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue)">In Error</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0">For a note created on the wrong patient or in the wrong place. Add a comment explaining why.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:16px 22px;align-items:baseline">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:15.5px;color:var(--asc-blue)">Forward</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0">The Action Pane defaults to Sign. Use Other Forwarding Options to send the note to another provider to <strong>Review</strong> or <strong>Sign</strong>, then find them with the binoculars search.</p>
+            </div>
+          </div>
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Alert" tone="info" title="Residents and mid-levels" hint-size="100%,86px">Your notes route to an attending to sign. Forward from the Action Pane and choose Sign, then search the attending by last name, first name.</x-import>
+        </sc-if>
+
+        <sc-if value="{{ on15 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Wrap up</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">What comes next</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 30px;max-width:62ch;text-wrap:pretty">This module is the pre&#8209;work for <em>Cerner Standard Functionalities for Providers</em> &mdash; a two&#8209;hour instructor&#8209;led class in the Cerner training domain. Everything from that class, plus every provider job aid, lives in <a href="Cerner%20Provider%20Hub.dc.html">Cerner for Providers</a> — searchable, any time.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:30px">
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,150px">
+              <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);margin-bottom:8px">Lesson 2</div>
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:20px;color:var(--asc-blue);margin-bottom:8px">Message Center</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Signing, reviewing and refusing. Proxies and the action pane.</p>
+            </x-import>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,150px">
+              <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);margin-bottom:8px">Lesson 3</div>
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:20px;color:var(--asc-blue);margin-bottom:8px">Patient Lists</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Location, custom, relationship and proxy lists. Printing your walk list.</p>
+            </x-import>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,150px">
+              <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);margin-bottom:8px">Lesson 4</div>
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:20px;color:var(--asc-blue);margin-bottom:8px">Inpatient Workflow</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Problem list, tagging, auto text, medication reconciliation, orders and PowerPlans, notes.</p>
+            </x-import>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Card" accent="green" hint-size="100%,150px">
+              <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);margin-bottom:8px">Lesson 5</div>
+              <div style="font-family:var(--font-serif);font-weight:700;font-size:20px;color:var(--asc-blue);margin-bottom:8px">Patient Discharge</div>
+              <p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0">Discharge diagnosis, discharge order entry, medication reconciliation and the discharge note.</p>
+            </x-import>
+          </div>
+          <div style="background:#fff;border:1px solid var(--border-subtle);border-top:4px solid var(--asc-blue);border-radius:4px;padding:26px 28px;max-width:70ch">
+            <div style="font-family:var(--font-serif);font-weight:700;font-size:22px;color:var(--asc-blue);margin-bottom:14px">Bring to class</div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="font-family:var(--font-sans);font-size:15.5px;line-height:1.5;color:var(--text-body)">A laptop on the Ascension network, or connected by VPN.</div>
+              <div style="font-family:var(--font-sans);font-size:15.5px;line-height:1.5;color:var(--text-body)">Your training domain credentials for your role.</div>
+              <div style="font-family:var(--font-sans);font-size:15.5px;line-height:1.5;color:var(--text-body)">Webcam and headset if you are attending virtually.</div>
+              <div style="font-family:var(--font-sans);font-size:15.5px;line-height:1.5;color:var(--text-body)">Two windows open only: the virtual classroom, and the Cerner training domain.</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on16 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:var(--asc-medium-blue);margin-bottom:12px">Wrap up</div>
+          <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.08;color:var(--asc-blue);margin:0 0 16px;text-wrap:pretty">Attestation</h1>
+          <p style="font-family:var(--font-sans);font-size:21px;line-height:1.45;color:var(--text-muted);margin:0 0 32px;max-width:62ch;text-wrap:pretty">Confirm you completed this module, then bring the confirmation to your instructor&#8209;led class.</p>
+          <div style="background:#fff;border:1px solid var(--border-subtle);border-top:4px solid var(--asc-blue);border-radius:4px;padding:32px;max-width:640px">
+            <label for="attest-name" style="display:block;font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-body);margin-bottom:8px">Your name</label>
+            <input id="attest-name" type="text" value="{{ name }}" onChange="{{ setName }}" placeholder="First and last name" style="width:100%;box-sizing:border-box;font-family:var(--font-sans);font-size:16px;color:var(--text-body);padding:12px 14px;border:1px solid var(--border-default);border-radius:4px;background:#fff;margin-bottom:26px">
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Checkbox" checked="{{ agree }}" on-change="{{ toggleAgree }}" label="I completed Introduction to Cerner, Provider Edition." description="I understand this module is required pre-work for Cerner Standard Functionalities for Providers." hint-size="100%,60px"></x-import>
+            <div style="height:26px"></div>
+            <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Button" variant="primary" size="md" disabled="{{ cannotSubmit }}" on-click="{{ submit }}" hint-size="200px,44px">Submit attestation</x-import>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ on17 }}" hint-placeholder-val="{{ true }}">
+          <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.ArchPanel" color="green" crop="horizontal" bleed="left" asset-base="assets" padding="52px" hint-size="100%,300px">
+            <div style="max-width:40ch">
+              <div style="font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:1.25px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:16px">Module complete</div>
+              <h1 style="font-family:var(--font-serif);font-weight:700;font-size:44px;line-height:1.06;margin:0 0 18px;color:#fff;text-wrap:pretty">Thank you</h1>
+              <p style="font-family:var(--font-sans);font-size:19px;line-height:1.45;margin:0;color:rgba(255,255,255,.92);text-wrap:pretty">You have finished the provider pre&#8209;work. Your instructor&#8209;led class will pick up at the Message Center.</p>
+            </div>
+          </x-import>
+          <div style="margin-top:28px;background:#fff;border:1px solid var(--border-subtle);border-radius:4px;padding:26px 28px;max-width:640px">
+            <div style="font-family:var(--font-condensed);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--asc-grey-500,#6b7280);margin-bottom:14px">Record of completion</div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:10px 24px;font-family:var(--font-sans);font-size:16px;color:var(--text-body)">
+              <div style="color:var(--text-muted)">Name</div><div style="font-weight:600">{{ recordName }}</div>
+              <div style="color:var(--text-muted)">Module</div><div>Introduction to Cerner, Provider Edition</div>
+              <div style="color:var(--text-muted)">Completed</div><div>{{ recordDate }}</div>
+            </div>
+          </div>
+          <p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--text-muted);margin:22px 0 0;max-width:66ch">Take a screenshot of this record, or note the date, and give it to your training facilitator. Questions about access or a workflow that is behaving oddly: Clinical Informatics, 918-744-3088, Monday to Friday.</p>
+        </sc-if>
+
+       </div>
+      </div>
+
+      <div style="flex:0 0 auto;border-top:1px solid var(--border-subtle);background:#fff;padding:18px 56px;display:flex;align-items:center;gap:20px">
+        <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Button" variant="outline" size="sm" disabled="{{ atStart }}" on-click="{{ prev }}" hint-size="120px,40px">Back</x-import>
+        <div style="flex:1;font-family:var(--font-condensed);font-size:13px;letter-spacing:.6px;color:var(--asc-grey-500,#6b7280);text-align:center">{{ currentLabel }}</div>
+        <x-import component-from-global-scope="AscensionStJohnDesignSystem_1e07e3.Button" variant="primary" size="sm" arrow="{{ true }}" disabled="{{ atEnd }}" on-click="{{ next }}" hint-size="120px,40px">Next</x-import>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;marketLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Ascension St. John&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Module&quot;},&quot;estMinutes&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;min&quot;:5,&quot;max&quot;:60,&quot;step&quot;:5,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Module&quot;},&quot;showRail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;requireAttestation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  screens = [
+    { lesson: 'Getting started', label: 'Welcome' },
+    { lesson: 'Getting started', label: 'How to use this module' },
+    { lesson: 'Getting started', label: 'Course objectives' },
+    { lesson: 'About PowerChart', label: 'One record, one chart' },
+    { lesson: 'About PowerChart', label: 'Who else is in the chart' },
+    { lesson: 'Getting in', label: 'Access PowerChart' },
+    { lesson: 'Getting in', label: 'Log in' },
+    { lesson: 'Getting in', label: 'Select your role' },
+    { lesson: 'The patient chart', label: 'The PowerChart window' },
+    { lesson: 'The patient chart', label: 'Find your patient' },
+    { lesson: 'The patient chart', label: 'The patient chart tab' },
+    { lesson: 'The patient chart', label: 'The demographics bar' },
+    { lesson: 'The patient chart', label: 'The two left-hand menus' },
+    { lesson: 'Documenting', label: 'Documentation and notes' },
+    { lesson: 'Wrap up', label: 'What comes next' },
+    { lesson: 'Wrap up', label: 'Attestation' },
+    { lesson: 'Wrap up', label: 'Module complete' }
+  ];
+
+  state = { i: 0, name: '', agree: false, submitted: false, doneAt: '' };
+
+  componentDidMount() {
+    try {
+      const raw = localStorage.getItem('cerner-provider-module');
+      if (raw) {
+        const s = JSON.parse(raw);
+        this.setState({
+          i: Math.min(Math.max(s.i | 0, 0), this.screens.length - 1),
+          name: s.name || '',
+          agree: !!s.agree,
+          submitted: !!s.submitted,
+          doneAt: s.doneAt || ''
+        });
+      }
+    } catch (e) {}
+  }
+
+  persist(next) {
+    try {
+      const s = Object.assign({}, this.state, next);
+      localStorage.setItem('cerner-provider-module', JSON.stringify({
+        i: s.i, name: s.name, agree: s.agree, submitted: s.submitted, doneAt: s.doneAt
+      }));
+    } catch (e) {}
+  }
+
+  goTo(i) {
+    const n = Math.min(Math.max(i, 0), this.screens.length - 1);
+    this.persist({ i: n });
+    this.setState({ i: n });
+    const el = document.scrollingElement || document.documentElement;
+    if (el) el.scrollTop = 0;
+  }
+
+  renderVals() {
+    const i = this.state.i;
+    const total = this.screens.length;
+    const requireAttestation = this.props.requireAttestation !== false;
+    const vals = {
+      logoHeight: 30,
+      marketLabel: this.props.marketLabel || 'Ascension St. John',
+      estMinutes: this.props.estMinutes || 20,
+      showRail: this.props.showRail !== false,
+      stepNow: i + 1,
+      stepTotal: total,
+      pct: Math.round(((i + 1) / total) * 100) + '%',
+      currentLabel: this.screens[i].lesson + ' \u2014 ' + this.screens[i].label,
+      atStart: i === 0,
+      atEnd: i === total - 1,
+      prev: () => this.goTo(i - 1),
+      next: () => this.goTo(i + 1),
+      name: this.state.name,
+      agree: this.state.agree,
+      setName: (e) => { const v = e.target.value; this.persist({ name: v }); this.setState({ name: v }); },
+      toggleAgree: () => { const v = !this.state.agree; this.persist({ agree: v }); this.setState({ agree: v }); },
+      cannotSubmit: requireAttestation && !(this.state.agree && this.state.name.trim().length > 1),
+      submit: () => {
+        const d = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+        this.persist({ submitted: true, doneAt: d, i: total - 1 });
+        this.setState({ submitted: true, doneAt: d, i: total - 1 });
+      },
+      recordName: this.state.name.trim() || '\u2014',
+      recordDate: this.state.doneAt || new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })
+    };
+    for (let n = 0; n < total; n++) vals['on' + (n + 1)] = i === n;
+    vals.rail = this.screens.map((s, n) => ({
+      label: s.label,
+      lesson: s.lesson,
+      showLesson: n === 0 || this.screens[n - 1].lesson !== s.lesson,
+      num: String(n + 1).padStart(2, '0'),
+      bg: n === i ? 'var(--asc-medium-blue-10)' : 'transparent',
+      fg: n === i ? 'var(--asc-blue)' : 'var(--text-body)',
+      weight: n === i ? 600 : 400,
+      mark: n === i ? 'var(--asc-medium-blue)' : 'transparent',
+      go: () => this.goTo(n)
+    }));
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

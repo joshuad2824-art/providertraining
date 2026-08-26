@@ -1,0 +1,15 @@
+/* Ascension web typefaces.
+
+   The print/primary typefaces are Chronicle Text G1 (serif) and Whitney (sans),
+   both Hoefler&Co licenses. The Digital Brand Guidelines (p.12) name the
+   sanctioned web replacements outright: Frank Ruhl Libre for Chronicle Text and
+   Roboto for Whitney, and require them for "mobile and web platforms that do
+   not support custom fonts" and for HTML5 display ads (p.21).
+
+   No Whitney/Chronicle binaries were provided with this system, so the web
+   stack below is the guideline-approved substitute set, loaded from Google
+   Fonts. Roboto Condensed stands in for Whitney Condensed (captions, fine
+   print, tables). If licensed Whitney/Chronicle webfonts become available,
+   drop the .woff2 files in assets/fonts/ and replace this @import with local
+   @font-face rules — the token names below do not change. */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600;700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&display=swap');

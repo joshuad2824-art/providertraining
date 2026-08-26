@@ -1,0 +1,59 @@
+/* Typography — Ascension Digital Brand Guidelines pp.10–12.
+   Serif (Chronicle Text G1 → Frank Ruhl Libre) sets headlines and small
+   subheads only, never body copy. Sans (Whitney → Roboto) sets all body copy,
+   UI and callouts. Condensed (Whitney Condensed → Roboto Condensed) is
+   restricted to captions, fine print, disclaimers and narrow tables. */
+:root{
+  --font-serif:'Frank Ruhl Libre',Georgia,'Times New Roman',serif;
+  --font-sans:'Roboto',Arial,Helvetica,sans-serif;
+  --font-condensed:'Roboto Condensed','Roboto',Arial,sans-serif;
+  /* Microsoft Office documents (Word/PowerPoint) use Georgia + Calibri instead —
+     see readme.md § Typography. Not tokenized: those files are not web output. */
+
+  --weight-light:300;
+  --weight-book:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+  --weight-black:900;
+
+  /* Scale. 10px is the guideline absolute minimum (7.5pt, p.8). */
+  --size-display:56px;
+  --size-h1:44px;
+  --size-h2:34px;
+  --size-h3:26px;
+  --size-h4:21px;
+  --size-subhead:18px;
+  --size-body-lg:18px;
+  --size-body:16px;
+  --size-body-sm:14px;
+  --size-caption:13px;
+  --size-fineprint:11px;
+  --size-min:10px;
+
+  --leading-tight:1.08; /* @kind other */
+  --leading-heading:1.18; /* @kind other */
+  --leading-snug:1.35; /* @kind other */
+  --leading-body:1.5; /* @kind other */
+  --leading-loose:1.65; /* @kind other */
+
+  --tracking-tight:-0.01em; /* @kind other */
+  --tracking-normal:0; /* @kind other */
+  --tracking-button:1.25px; /* @kind other */
+  --tracking-eyebrow:1.5px; /* @kind other */
+
+  /* Semantic roles */
+  --text-display-family:var(--font-serif);
+  --text-display-weight:var(--weight-bold);
+  --text-heading-family:var(--font-serif);
+  --text-heading-weight:var(--weight-bold);
+  --text-subhead-family:var(--font-serif);
+  --text-subhead-weight:var(--weight-semibold);
+  --text-callout-family:var(--font-sans);
+  --text-callout-weight:var(--weight-semibold);
+  --text-body-family:var(--font-sans);
+  --text-body-weight:var(--weight-book);
+  --text-fineprint-family:var(--font-condensed);
+  --text-button-family:var(--font-sans);
+  --text-button-weight:var(--weight-semibold);
+}

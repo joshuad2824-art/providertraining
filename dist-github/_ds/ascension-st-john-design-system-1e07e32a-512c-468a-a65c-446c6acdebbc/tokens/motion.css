@@ -1,0 +1,23 @@
+/* Motion. Animated display ads: 15 seconds maximum — one loop, or three loops
+   totalling 15s; never loop indefinitely; 24fps maximum (p.20). HTML5 ads 30s
+   or less (p.21). UI motion follows the same restraint: short, eased fades and
+   slides, no bounce, no spring, no attention-seeking loops. */
+:root{
+  --duration-instant:80ms; /* @kind other */
+  --duration-fast:150ms; /* @kind other */
+  --duration-base:220ms; /* @kind other */
+  --duration-slow:360ms; /* @kind other */
+  --duration-ad-max:15s; /* @kind other */
+  --duration-ad-html5-max:30s; /* @kind other */
+
+  --ease-standard:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+
+  --transition-color:color var(--duration-fast) var(--ease-standard),background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard);
+  --transition-transform:transform var(--duration-base) var(--ease-standard);
+
+  --press-scale:0.98; /* @kind other */
+  --hover-opacity:0.88; /* @kind other */
+  --ad-fps-max:24; /* @kind other */
+}
