@@ -7,11 +7,18 @@
   publish = "dist-github"
   command = ""
 
-# This site is internal. Site-level password protection is set in the Netlify UI
-# (Site configuration → Access & security → Visitor access), not here — it is an
-# account setting, not a file one. The header below is the second line of
-# defence: even if protection is ever removed, search engines are told to stay
-# out, so an accidentally-open site does not become an indexed one.
+# This site is internal and must not be deployed until it is password protected.
+#
+# Visitor access is an account setting, not a file one — it lives in the Netlify
+# UI under Site configuration → Access & security → Visitor access. It is also a
+# paid feature: on the free tier the API rejects it with a 422, which is where
+# this stands today. The project (oktul-cerner-provider-training) exists but has
+# deliberately never been deployed, so there is nothing at the URL to protect
+# yet. Upgrade the team to Pro, set the password, and deploy in that order.
+#
+# The header below is the second line of defence: if protection is ever dropped,
+# search engines are still told to stay out, so an accidentally-open site does
+# not also become an indexed one.
 [[headers]]
   for = "/*"
   [headers.values]
