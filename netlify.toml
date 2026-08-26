@@ -7,18 +7,22 @@
   publish = "dist-github"
   command = ""
 
-# This site is internal and must not be deployed until it is password protected.
+# This site is deliberately public, and search engines are asked to stay out.
 #
-# Visitor access is an account setting, not a file one — it lives in the Netlify
-# UI under Site configuration → Access & security → Visitor access. It is also a
-# paid feature: on the free tier the API rejects it with a 422, which is where
-# this stands today. The project (oktul-cerner-provider-training) exists but has
-# deliberately never been deployed, so there is nothing at the URL to protect
-# yet. Upgrade the team to Pro, set the password, and deploy in that order.
+# It was going to sit behind a Netlify visitor password, but that is a paid
+# feature — on this team's free plan the API rejects it with a 422. The call
+# was made to publish anyway rather than wait: the content is published OKTUL
+# job aids and screenshots of test patients from the training domain, with no
+# PHI in any of it.
 #
-# The header below is the second line of defence: if protection is ever dropped,
-# search engines are still told to stay out, so an accidentally-open site does
-# not also become an indexed one.
+# So the headers below are not a second line of defence. They are the only
+# control on this site, and they only discourage indexing — anyone with the URL
+# can read it. Do not add anything here that would not be fine on the open web.
+#
+# If you do want it private later: upgrade the team to Netlify Pro, then set the
+# password under Site configuration -> Access & security -> Visitor access. It
+# is an account setting, not a file one, so it cannot be turned on from here.
+
 [[headers]]
   for = "/*"
   [headers.values]
