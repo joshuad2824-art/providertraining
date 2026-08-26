@@ -490,9 +490,15 @@ Object.assign(__ds_scope, { Switch });
 // components/icons/Icon.jsx
 try { (() => {
 // Ascension publishes no icon library of its own. Lucide is used as the
-// substitute set (see readme.md § Iconography) and loaded from CDN as an SVG
-// mask so glyphs inherit currentColor and can be tinted with brand tokens.
-const CDN = 'https://unpkg.com/lucide-static@0.544.0/icons';
+// substitute set (see readme.md § Iconography), applied as an SVG mask so
+// glyphs inherit currentColor and can be tinted with brand tokens.
+//
+// Served from assets/icons/ rather than unpkg.com, so icons still appear on a
+// filtered network. Only the glyphs the components below name are vendored; to
+// use another, copy it out of lucide-static v0.544.0 into that folder first.
+// The path is resolved against the page, so it assumes a page at the root of
+// the distribution, alongside _ds/.
+const CDN = '_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/assets/icons';
 function Icon({
   name,
   size = 20,

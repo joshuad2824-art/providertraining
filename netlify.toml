@@ -1,0 +1,33 @@
+# Netlify deploy for the provider training site.
+#
+# There is no build. The site in dist-github/ is plain static files — nothing to
+# compile, install or bundle — so Netlify's job is only to publish that folder.
+
+[build]
+  publish = "dist-github"
+  command = ""
+
+# This site is internal. Site-level password protection is set in the Netlify UI
+# (Site configuration → Access & security → Visitor access), not here — it is an
+# account setting, not a file one. The header below is the second line of
+# defence: even if protection is ever removed, search engines are told to stay
+# out, so an accidentally-open site does not become an indexed one.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # The pages fetch nothing from the internet (see dist-github/README.md), so
+    # the policy can be this tight. If a future edit reintroduces a CDN
+    # reference, the page breaks here before it breaks on a hospital network —
+    # which is the point. 'unsafe-eval' and inline scripts are what the
+    # design-canvas runtime in support.js needs to render its templates.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+
+# The single-file offline build is meant to be saved and passed around, so serve
+# it as a download rather than rendering it in the tab.
+[[headers]]
+  for = "/Cerner for Providers - offline.html"
+  [headers.values]
+    Content-Disposition = "attachment"

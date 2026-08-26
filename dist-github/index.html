@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerner for Providers — Ascension St. John</title>
+<meta name="description" content="Reference and training for Ascension St. John providers using Cerner PowerChart.">
+<link rel="icon" href="assets/logos/asce_emb_wht_rgb_300.png">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/colors.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/typography.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/shape.css">
+<link rel="stylesheet" href="_ds/ascension-st-john-design-system-1e07e32a-512c-468a-a65c-446c6acdebbc/tokens/base.css">
+<style>
+  /* Deliberately plain HTML and CSS. This page is the front door, so it must
+     render even if the design-canvas runtime behind the other pages fails. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--asc-grey-100, #eef0f3);
+    font-family: var(--font-sans, Arial, sans-serif);
+    color: var(--text-body, #22252a);
+  }
+  header {
+    display: flex; align-items: center; gap: 22px;
+    padding: 0 28px; height: 70px;
+    background: var(--asc-blue, #1b4297); color: #fff;
+  }
+  header img { height: 30px; width: auto; display: block; }
+  header .rule { width: 1px; height: 30px; background: rgba(255,255,255,.28); }
+  header .name { font-size: 15px; font-weight: 600; letter-spacing: .2px; }
+  header .org {
+    font-family: var(--font-condensed, Arial, sans-serif); font-size: 12px;
+    letter-spacing: .6px; text-transform: uppercase; color: rgba(255,255,255,.72);
+  }
+  main { max-width: 1060px; margin: 0 auto; padding: 48px 28px 80px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: 1.25px;
+    text-transform: uppercase; color: var(--asc-medium-blue, #1e69d2); margin-bottom: 10px;
+  }
+  h1 {
+    font-family: var(--font-serif, Georgia, serif); font-weight: 700;
+    font-size: 38px; line-height: 1.12; color: var(--asc-blue, #1b4297); margin: 0 0 16px;
+  }
+  .lede { font-size: 18px; line-height: 1.55; max-width: 62ch; margin: 0 0 40px; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    display: block; background: #fff; border-top: 4px solid var(--asc-blue, #1b4297);
+    padding: 26px 26px 24px; text-decoration: none; color: inherit;
+    box-shadow: 0 1px 3px rgba(0,0,0,.07);
+  }
+  a.card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.13); }
+  a.card:hover h2 { color: var(--asc-medium-blue, #1e69d2); }
+  .card h2 {
+    font-family: var(--font-serif, Georgia, serif); font-weight: 700; font-size: 23px;
+    color: var(--asc-blue, #1b4297); margin: 0 0 10px;
+  }
+  .card p { margin: 0 0 14px; line-height: 1.5; }
+  .card .go {
+    font-family: var(--font-condensed, Arial, sans-serif); font-size: 13px;
+    font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase;
+    color: var(--asc-medium-blue, #1e69d2);
+  }
+  .card.secondary { border-top-color: var(--asc-green, #00a791); }
+  .card.secondary h2 { color: var(--asc-blue, #1b4297); }
+  .card.secondary .go { color: #00776a; }
+  footer {
+    max-width: 1060px; margin: 0 auto; padding: 0 28px 64px;
+    font-size: 14px; line-height: 1.6; color: #5b6069;
+  }
+  footer strong { color: #22252a; }
+  a { color: var(--asc-medium-blue, #1e69d2); }
+  *:focus-visible { outline: 2px solid var(--asc-gold, #ffb400); outline-offset: 2px; }
+  @media (max-width: 760px) {
+    .cards { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    header { height: auto; padding: 12px 20px; flex-wrap: wrap; row-gap: 10px; }
+    main { padding: 32px 20px 56px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="assets/logos/asce_st_john_logo_hz1_wht_rgb_300.png" alt="Ascension St. John">
+  <span class="rule"></span>
+  <span>
+    <span class="name" style="display:block">Cerner for Providers</span>
+    <span class="org" style="display:block">Ascension St. John</span>
+  </span>
+</header>
+
+<main>
+  <p class="eyebrow">Provider training</p>
+  <h1>Cerner for Providers</h1>
+  <p class="lede">
+    Reference and training for Ascension St. John providers using Cerner PowerChart —
+    41 topics drawn from the OKTUL job aids, plus the five-lesson provider course.
+    Start with the hub; it has everything and a search box.
+  </p>
+
+  <div class="cards">
+    <a class="card" href="Cerner%20Provider%20Hub.dc.html">
+      <h2>Look it up — the hub</h2>
+      <p>
+        Search or browse 41 topics across nine categories: getting connected, finding your way,
+        Message Center, patient lists, inpatient workflow, discharge, the ED, PerfectServe and other
+        tools. Also holds the five class lessons.
+      </p>
+      <span class="go">Open the hub &rarr;</span>
+    </a>
+
+    <a class="card" href="Introduction%20to%20Cerner%20-%20Providers.dc.html">
+      <h2>Introduction to Cerner</h2>
+      <p>
+        The 17-screen self-paced module — what PowerChart is, how the window is laid out, and how to
+        find a patient. This is the pre-work for the instructor-led class.
+      </p>
+      <span class="go">Start the module &rarr;</span>
+    </a>
+
+    <a class="card secondary" href="Cerner%20for%20Providers%20-%20offline.html" download>
+      <h2>Take it offline</h2>
+      <p>
+        The whole hub as one file, with every screenshot, font and script inside it. Save it, email
+        it, put it on a share drive — it opens with no network at all.
+      </p>
+      <span class="go">Download the single file &rarr;</span>
+    </a>
+
+    <div class="card secondary" style="border-top-color:var(--asc-gold,#ffb400)">
+      <h2>Something wrong or missing?</h2>
+      <p>
+        Every topic here is transcribed from a published job aid. If a screen has changed or a step
+        is wrong, that is worth knowing — raise it with the OKTUL provider training team so the
+        source aid and this site stay in step.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>
+    <strong>The screenshots use test patients.</strong> Every Cerner screen shown here comes from the
+    training domain, and the PerfectServe login screens have the tester's email and phone number
+    blurred at source. Nothing on this site is real patient information.
+  </p>
+</footer>
+
+</body>
+</html>
