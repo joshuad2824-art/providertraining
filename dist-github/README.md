@@ -8,7 +8,7 @@ HTML, and it runs.
 | :-- | :-- |
 | `index.html` | The front door. Plain HTML and CSS, no runtime, so it renders even if everything else fails. |
 | `Cerner Provider Hub.dc.html` | The reference hub. Search and browse 41 provider topics across 9 categories, plus the five class lessons with per-lesson attestation. This is the main deliverable. |
-| `Introduction to Cerner - Providers.dc.html` | The 17-screen self-paced eLearning module. Pre-work for the instructor-led class. |
+| `Introduction to Cerner - Providers.dc.html` | **The course.** All 41 topics in 61 self-paced screens, each with a practice step and a knowledge check. Replaces the instructor-led class rather than preparing you for it. The filename is historical; the module calls itself *Cerner for Providers — the course*. |
 | `Cerner for Providers - offline.html` | The hub compiled into one self-contained file — every screenshot, style and script inlined. Email it, put it on a share drive, open it with no network. Regenerate it after editing the hub; do not edit it directly. |
 
 ## Opening it
@@ -40,7 +40,27 @@ All copy lives in `content/`, separate from the pages, so text edits never touch
 
 - `topics-1.js` / `topics-2.js` / `topics-3.js` — the topic library (`CERNER_TOPICS_1/2/3`). Part 3 is PerfectServe.
 - `course.js` — categories, the five class lessons, and `CERNER_FACILITATOR` (a facilitator view, written and currently unreferenced).
+- `teaching.js` — what a facilitator used to add on top of the reference material (`CERNER_TEACHING`), keyed by topic id: why it matters, what to try in the training domain, and one knowledge check.
+- `module.js` — the course spine (`CERNER_MODULE`): the ordered list of screens, and which topic each one teaches.
 - `images.js` — every screenshot as a JPEG data URI (`CERNER_IMAGES`) plus its aspect ratio (`CERNER_RATIOS`). This is what makes the offline build work.
+
+### The course
+
+The module is data-driven: `module.js` lists screens, and a `topic` screen builds itself from the
+topic entry plus its `teaching.js` entry. Editing a job aid updates both the hub and the course.
+
+Every topic must appear in `module.js` exactly once — as a `topic` screen, or as the `covers` of a
+hand-written `page` where the bespoke screen teaches it better. The module checks this when it
+loads: a topic with no home is logged to the console and listed on an extra screen at the end, so
+adding a topic to the library without placing it in the course fails loudly instead of silently.
+
+Knowledge checks are authored with the correct option first, because that is easier to write and
+review. The module rotates the options deterministically per topic id when it renders, so the
+answer is not always in the same position. Never write an explanation that refers to an option by
+its position.
+
+Ground every check in the topic's own `keyFacts`, `sections` or `notes`. If a job aid changes,
+change the topic first, then the check resting on it.
 
 ### Editing a topic
 
@@ -97,10 +117,15 @@ login screenshots have the tester's email and phone number blurred at source.
 
 ## Known gaps
 
-- Three `<image-slot>`s in the intro module are still empty — `cerner-login`, `cerner-role` and
+- Three `<image-slot>`s in the course are still empty — `cerner-login`, `cerner-role` and
   `cerner-search`, wanting the PowerChart login screen, the role-selection screen and patient
   search. No source screenshot for those exists upstream yet. Each shows its placeholder text
   until one is dropped in.
+- The course logs one 404 for `.image-slots.state.json`, the authoring tool's sidecar. It is
+  handled — the slots are read-only outside that runtime — and left alone because re-exporting
+  overwrites `image-slot.js`.
+- The single-file offline build predates the course and still contains the old 17-screen module.
+  Regenerate it from the hub to bring it up to date.
 - `Campus-Map.md` upstream is an image-only placeholder and has no topic.
 - Twelve of the thirteen PerfectServe guides have no extracted screenshots upstream, so those
   topics are text and steps only. Only the login flow has a gallery.

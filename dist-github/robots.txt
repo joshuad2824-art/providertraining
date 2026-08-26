@@ -1,0 +1,6 @@
+# Internal provider training. Public only because visitor passwords are a paid
+# Netlify feature — not because it is meant to be found. The X-Robots-Tag header
+# in netlify.toml says the same thing; this file is here for the crawlers that
+# read robots.txt and never see the header.
+User-agent: *
+Disallow: /

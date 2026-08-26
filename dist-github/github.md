@@ -32,7 +32,24 @@ date: 2026-08-26T18:31:10Z
 | PerfectServe → login topic gallery | `Images_CC-Login_Process_BYOD_(iOS)/image{20,16,10,6,3,8,14,1,17,12,15,9,11,4,19,13}.png` → `assets/perfectserve/ps-login-*.png` |
 | Other tools (3 topics) | `WellSheet-Quick-Guide.md`, `DynaMed-Clinical-Reference.md`, `Provider-Status-Level-of-Care-Orders.md` |
 | The course (5 lessons) | `00_Job-Aids-Index.md` + the OKTUL provider facilitator guide (uploaded .docx) |
-| Introduction to Cerner (17-screen module) | `Med_Recs/images/image8.png`, `Med_Recs/images/image2.png`, `Message_Center/images/image10.png`, `Message_Center/images/image1.png` |
+| The course (61 screens, all 41 topics) | Every topic file, via `content/module.js` + `content/teaching.js`. Bespoke screens also use `Med_Recs/images/image8.png`, `Med_Recs/images/image2.png`, `Message_Center/images/image10.png`, `Message_Center/images/image1.png` |
+
+## The course
+
+The 17-screen "Introduction to Cerner" pre-work module is now a 61-screen self-paced course
+covering all 41 topics, so a provider can finish the material without a facilitator. Structure and
+teaching content are authored; the reference material on each topic screen is generated from the
+topic entry, so it cannot drift from the hub.
+
+- `content/teaching.js` — per topic: why it matters, what to try in the training domain, one
+  knowledge check with its explanation. Authored, and grounded in that topic's own facts.
+- `content/module.js` — the screen order, and which topic each screen teaches.
+- Coverage is enforced at load: every topic must have exactly one home in the module.
+
+Five topics (`powerchart-window`, `find-patient`, `chart-tab`, `demographics`, `menus`) and
+`create-note` are taught by the original hand-written screens, which have numbered screenshot
+callouts a generated screen would lose. Those screens declare `covers`, and pick up the same Try it
+and knowledge check.
 
 ## Notes
 

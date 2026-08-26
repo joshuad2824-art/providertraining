@@ -20,6 +20,17 @@ built from. If you are here to read or change the site, go to
 | `Ascension Branding/` | Brand assets and the Ascension digital guidelines PDF. |
 | `Adult Learning/`, `Mark & Measure/` | Author reference libraries — instructional design and graphic design. Background reading, not provider content, and nothing on the site is built from them. |
 
+## Where it is published
+
+The site is live on Netlify at `oktul-cerner-provider-training.netlify.app`, built from `main` with
+no build step — `netlify.toml` just publishes `dist-github/`.
+
+**It is public.** Netlify visitor passwords are a paid feature and this team is on the free plan, so
+the decision was to publish anyway rather than wait. `robots.txt` and an `X-Robots-Tag` header ask
+search engines to stay out, and that is the only control there is — anyone with the URL can read
+the site. Everything here is published job aids and training-domain screenshots with no PHI, and it
+needs to stay that way.
+
 ## Provenance
 
 `dist-github/github.md` is the record of what on the site came from which file here, plus the sync
